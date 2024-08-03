@@ -4,6 +4,6 @@ export interface RequestOptions {
   url: string;
   method: HttpMethod;
   body?: any;
-  token?: string;
-  headers?: Record<string, string>;
+  //token?: string;
+  //headers?: Record<string, string>;
 }

@@ -4,16 +4,18 @@ export default class BaseRepository{
     protected API_URL:string = import.meta.env.VITE_API_URL as string;
 
     async apiRequest<T>(options: RequestOptions): Promise<T> {
-        const { url, method, body, token, headers = {} } = options;
+        const { url, method, body,/* token, headers = {} */ } = options;
       
         const defaultHeaders: Record<string, string> = {
           "Content-Type": "application/json",
-          ...headers,
+          //...headers,
         };
       
+        /*
         if (token) {
           defaultHeaders["Authorization"] = `Bearer ${token}`;
         }
+        */
       
         const config: RequestInit = {
           method,
