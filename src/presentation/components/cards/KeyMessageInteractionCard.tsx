@@ -3,7 +3,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
 import MessageService from "../../../services/MessageService";
-import { BaseAPIResponse, MessageIdAPIResponse, MessageAPIResponse, MessagesAPIResponse  } from "../../../interfaces/apiResponsesInterfaces";
+import UserService from "../../../services/UserService";
+import { BaseAPIResponse, MessageIdAPIResponse, MessageAPIResponse, MessagesAPIResponse, UserAPIResponse  } from "../../../interfaces/apiResponsesInterfaces";
 
 export default function KeyMessageInteractionCard() {
   const [selectedUser, setSelectedUser] = React.useState<string | null>(
@@ -18,14 +19,9 @@ export default function KeyMessageInteractionCard() {
   );
 
   const messageService = MessageService.getInstance();
+  const userService = UserService.getInstance();
 
   const map = new Map();
-  map.set("Alfonso", 1);
-  map.set("Ivan", 2);
-  map.set("Alicia", 3);
-  map.set(1, "Alfonso");
-  map.set(2, "Ivan");
-  map.set(3, "Alicia");
 
   function getHourFromTimestamp(timestamp: string): string {
     const date = new Date(timestamp);
@@ -43,6 +39,20 @@ export default function KeyMessageInteractionCard() {
   }
 
   const handleOperation = async () => {
+
+    const getUsersResult = await userService.getAllUsers();
+    if((getUsersResult as BaseAPIResponse).status === 500) {
+      setOperationResult("Internal server error");
+      return;
+    };
+    const userList = (getUsersResult as UserAPIResponse).data.users;
+    for(const user of userList) {
+      if (!map.has(user.username)){
+        map.set(user.username, user.id);
+        map.set(user.id, user.username);
+      }
+    }
+
     if (!selectedUser) {
       setOperationResult("No user selected");
       return;
