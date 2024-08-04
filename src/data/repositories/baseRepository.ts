@@ -1,7 +1,7 @@
-import { RequestOptions } from "../interfaces/repositoriesInterfaces";
+import { RequestOptions } from "../../interfaces/repositoriesInterfaces";
 
 export default class BaseRepository{
-    protected API_URL:string = import.meta.env.VITE_API_URL as string;
+    protected API_URL:string =  import.meta.env.VITE_API_URL as string;
 
     async apiRequest<T>(options: RequestOptions): Promise<T> {
         const { url, method, body,/* token, headers = {} */ } = options;

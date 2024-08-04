@@ -15,6 +15,20 @@ export default class UserRepository extends BaseRepository {
     return UserRepository.instance;
   }
 
+  public async getUsers() {
+    try {
+      var result = await this.apiRequest({
+        url: `${this.API_URL}/api/User/GetAllUsers`,
+        method: "GET",
+      });
+
+      return result;
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      return { error: error };
+    }
+  }
+
   public async createUser(username: string) {
     try {
       var result = await this.apiRequest({

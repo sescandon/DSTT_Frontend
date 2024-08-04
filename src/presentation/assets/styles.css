@@ -1,0 +1,88 @@
+.MainContainer {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.ContentContainer {
+  margin: 30px;
+  color: white;
+  justify-self: center;
+  justify-items: center;
+}
+
+.LightedText {
+  color: gray;
+}
+.ImportantText {
+  font-style: italic;
+}
+
+.ImportantText:hover {
+  color: rgb(8, 200, 200);
+}
+
+.ImportantLink {
+  color: rgb(8, 200, 200);
+}
+
+.MainButton {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  width: 190px;
+}
+
+.MainButton:hover {
+  background-color: rgb(8, 200, 200);
+  color: white;
+}
+
+.MainButton:active {
+  background-color: rgb(5, 121, 121) !important;
+  color: white;
+}
+
+.DashboardContentContainer {
+  margin: 30px;
+  color: white;
+  justify-self: center;
+  justify-items: center;
+  justify-content: center;
+}
+
+.DashboardContentContainer h1 {
+  color: white;
+  width: max-content;
+}
+
+
+
+.CardContainer{
+  padding: 10px;
+  margin-top: 20px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(5, 121, 121);
+}
+
+.CardContainer label{
+  margin-right: 10px; 
+}
+
+.DashboardButton {
+  background-color: rgb(8, 200, 200);
+  color: white;
+  font-weight: bold;
+}
+
+.DashboardButton:hover {
+  background-color: white;
+  color: black;
+}
+
+.DashboardButton:active {
+  background-color: rgb(5, 121, 121) !important;
+  color: white;
+}
